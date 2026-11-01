@@ -10,12 +10,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0b2257" id="theme-color-meta">
-    <meta name="apple-mobile-web-app-title" content="Turni Demo">
-    <meta name="description" content="Gestione turni infermieri — versione dimostrativa">
+    <meta name="apple-mobile-web-app-title" content="Turni Reparto">
+    <meta name="description" content="Gestione turni del personale sanitario (infermieri, medici, OSS) — versione dimostrativa">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="icon-192.png">
-    <title>Turni Infermieri — Demo</title>
+    <title>Turni di Reparto — Demo</title>
     <!-- VERSIONE DIMOSTRATIVA: al posto di Firebase un archivio locale nel browser (vedi README.md) -->
     <script src="demo-firebase.js"></script>
     <script src="demo-data.js"></script>
@@ -2859,13 +2859,13 @@
     </div>
     <div id="splash-brand">
         <img class="splash-logo" src="icon-512.png" alt="">
-        <h1 class="splash-title" id="splash-welcome-title">TURNI INFERMIERI</h1>
+        <h1 class="splash-title" id="splash-welcome-title">TURNI DI REPARTO</h1>
         <span class="splash-sub" id="splash-welcome-sub">DEMO</span>
         <div class="splash-dots"><span></span><span></span><span></span></div>
     </div>
     <div id="manual-upload">
         <p style="color:#ef4444;font-weight:bold;font-size:1.1rem;margin-bottom:10px">⚠️ File automatico non trovato</p>
-        <p style="color:var(--text-sec);font-size:0.9rem;margin:0">Carica file Excel (infermieri.xlsx)</p>
+        <p style="color:var(--text-sec);font-size:0.9rem;margin:0">Carica file Excel (turni.xlsx)</p>
         <label for="file-input" class="file-label">
             <span class="material-icons-round">upload_file</span> CARICA FILE (.xlsx)
         </label>
@@ -2925,7 +2925,7 @@
 <div id="admin-panel-modal" onclick="closeAdminPanel(event)">
     <div class="modal-content adm-shell" onclick="event.stopPropagation()">
         <aside class="adm-side">
-            <div class="adm-brand"><span class="adm-brand-ico"><span class="material-icons-round">admin_panel_settings</span></span><div><b>Pannello di controllo</b><small>Turni Infermieri · admin</small></div></div>
+            <div class="adm-brand"><span class="adm-brand-ico"><span class="material-icons-round">admin_panel_settings</span></span><div><b>Pannello di controllo</b><small>Turni di Reparto · admin</small></div></div>
             <nav class="admin-tabs adm-nav" aria-label="Sezioni del pannello">
                 <div class="adm-nav-grp">Controllo</div>
                 <button class="admin-tab-btn active" data-tab="panoramica" onclick="switchAdminTab('panoramica',this)"><span class="material-icons-round">dashboard</span><span class="adm-nav-l">Panoramica</span><b class="adm-badge" id="adm-badge-panoramica"></b></button>
@@ -3210,7 +3210,7 @@
 <div id="coord-console" class="cc-scope" role="dialog" aria-modal="true" aria-label="Area coordinatore">
     <div class="cc-login" id="cc-login">
         <form class="cc-login-panel" onsubmit="coordLogin(event)" autocomplete="off">
-            <div class="cc-login-mark"><span class="cc-brand-mark">INF</span><span>Turni infermieri · demo</span></div>
+            <div class="cc-login-mark"><span class="cc-brand-mark">TR</span><span>Turni di reparto · demo</span></div>
             <h1>Area coordinatore</h1>
             <p>Accedi una volta sola: questo dispositivo resta autorizzato finché non scegli Esci.</p>
             <p><b>Versione demo: la password è <code>demo</code></b></p>
@@ -3227,7 +3227,7 @@
 
     <div class="cc-app" id="cc-app">
         <aside class="cc-side">
-            <div class="cc-brand"><span class="cc-brand-mark">INF</span><div><b>Coordinamento</b><small>Infermieri · demo</small></div></div>
+            <div class="cc-brand"><span class="cc-brand-mark">TR</span><div><b>Coordinamento</b><small>Turni di reparto · demo</small></div></div>
             <nav class="cc-nav" id="cc-nav" aria-label="Sezioni">
                 <div class="cc-nav-group">Calendario</div>
                 <button data-sec="panoramica" onclick="ccGo('panoramica')"><span class="msym">space_dashboard</span><span>Panoramica</span></button>
@@ -3454,7 +3454,7 @@
         </div>
         <div class="modal-body" style="background:var(--bg-card);display:flex;flex-direction:column;height:100%;">
 
-            <!-- STEP 1: selezione infermieri -->
+            <!-- STEP 1: selezione colleghi -->
             <div id="wheel-step-1">
                 <div style="display:flex;justify-content:space-between;align-items:center;padding-right:20px;">
                     <div class="dinner-section-title">1. CHI PARTECIPA ALLA SFIGA?</div>
@@ -3542,7 +3542,7 @@
         <div class="app-brand">
             <img src="icon-192.png" alt="" onerror="this.style.display='none'">
             <div class="brand-text">
-                <span class="app-title-text">Turni Infermieri</span>
+                <span class="app-title-text">Turni di Reparto</span>
                 <span class="app-subtitle-text">Calendario · demo</span>
             </div>
             <button id="hdr-coord-exit" class="hdr-coord-exit" onclick="coordExitFromHeader()" title="Chiude l’accesso coordinatore: per rientrare servirà la password">
@@ -3661,7 +3661,7 @@
             return orig.apply(console, a);
         };
     })();
-    const FILE_NAME = "infermieri.xlsx?v=" + new Date().getTime();
+    const FILE_NAME = "turni.xlsx?v=" + new Date().getTime();
     const MONTH_MAP = { "GENNAIO":0,"FEBBRAIO":1,"MARZO":2,"APRILE":3,"MAGGIO":4,"GIUGNO":5,"LUGLIO":6,"AGOSTO":7,"SETTEMBRE":8,"OTTOBRE":9,"NOVEMBRE":10,"DICEMBRE":11 };
     const FIXED_HOLIDAYS = {
         "0-1":"CAPODANNO","0-6":"EPIFANIA","3-25":"LIBERAZIONE","4-1":"1° MAGGIO","5-2":"REPUBBLICA",
@@ -3723,12 +3723,12 @@
         appId: ""
     };
     let fbApp, db, fbAuth, fbReady = false, fbPersistence = false;
-    // PROVA usa documenti propri dentro infermieri26_config ("prova_settings", "prova_turni_…"),
+    // PROVA usa documenti propri dentro reparto_config ("prova_settings", "prova_turni_…"),
     // così le prove non toccano l'app di produzione, che legge "settings". Per andare in
     // produzione basta DATA_NS = ''. Il documento "reperibilita" resta condiviso di proposito:
     // è quello in cui scrive anche il portale Richieste.
     const DATA_NS = '';
-    function cfgRef(name) { return db.collection('infermieri26_config').doc(DATA_NS + name); }
+    function cfgRef(name) { return db.collection('reparto_config').doc(DATA_NS + name); }
     try {
         fbApp = firebase.initializeApp(firebaseConfig);
         db = firebase.firestore();
@@ -3772,7 +3772,7 @@
     const IDENTITY_EXTRA_OPTIONS = ["Ospite"];
     // ?server=1: l'app viene aperta dal motore su GitHub solo per leggere i turni (niente sessioni, popup o scritture).
     const SERVER_MODE = new URLSearchParams(location.search).has('server');
-    let userIdentity = SERVER_MODE ? null : (localStorage.getItem('infermieri_identity_name') || null);
+    let userIdentity = SERVER_MODE ? null : (localStorage.getItem('reparto_identity_name') || null);
     console.log('[Identità] Letta da localStorage all\'avvio:', userIdentity || '(nessuna)');
     let identityRecoveryPromise = null;
 
@@ -3783,9 +3783,9 @@
         if(!titleEl || !subEl) return;
         if(userIdentity) {
             titleEl.innerText = `Benvenuto, ${userIdentity}`;
-            subEl.innerText = 'Turni Infermieri · demo';
+            subEl.innerText = 'Turni di Reparto · demo';
         } else {
-            titleEl.innerText = 'TURNI INFERMIERI';
+            titleEl.innerText = 'TURNI DI REPARTO';
             subEl.innerText = 'DEMO';
         }
     }
@@ -3819,7 +3819,7 @@
         listenReperibilita();   // le richieste in arrivo si ascoltano solo sul telefono del coordinatore
         listenOpNotes();        // note degli operatori per il coordinatore
         try {
-            await db.collection('infermieri26_accessi').doc(sessionId).set({
+            await db.collection('reparto_accessi').doc(sessionId).set({
                 device: getDeviceLabel(),
                 userAgent: navigator.userAgent,
                 identity: userIdentity || null,
@@ -3834,7 +3834,7 @@
         document.addEventListener('visibilitychange', sendHeartbeat);
         window.addEventListener('pagehide', () => {
             try {
-                db.collection('infermieri26_accessi').doc(sessionId).set({ online:false, lastActive: firebase.firestore.FieldValue.serverTimestamp() }, { merge:true });
+                db.collection('reparto_accessi').doc(sessionId).set({ online:false, lastActive: firebase.firestore.FieldValue.serverTimestamp() }, { merge:true });
             } catch(e) {}
         });
     }
@@ -3849,10 +3849,10 @@
             const uid = fbAuth.currentUser && fbAuth.currentUser.uid;
             console.log('[Identità] Tentativo recupero da UID Firebase:', uid || '(uid assente)');
             if(!uid) return;
-            const doc = await db.collection('infermieri26_identities').doc(uid).get();
+            const doc = await db.collection('reparto_identities').doc(uid).get();
             if(doc.exists && doc.data().name) {
                 userIdentity = doc.data().name;
-                localStorage.setItem('infermieri_identity_name', userIdentity);
+                localStorage.setItem('reparto_identity_name', userIdentity);
                 applySplashWelcome();
                 checkIfIAmCoordinator();
                 console.log('[Identità] Recuperata dal backup UID:', userIdentity);
@@ -3863,14 +3863,14 @@
     }
     function persistIdentityToUidBackup() {
         if(!fbReady || !fbAuth.currentUser) return;
-        db.collection('infermieri26_identities').doc(fbAuth.currentUser.uid)
+        db.collection('reparto_identities').doc(fbAuth.currentUser.uid)
             .set({ name: userIdentity || null, updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge:true })
             .catch(e => console.error("Errore salvataggio identità di riserva:", e));
     }
 
     function writeIdentityToSession() {
         if(!fbReady) return Promise.resolve();
-        return db.collection('infermieri26_accessi').doc(sessionId)
+        return db.collection('reparto_accessi').doc(sessionId)
             .set({ identity: userIdentity || null, online: document.visibilityState === 'visible' }, { merge:true })
             .catch(e => console.error("Errore aggiornamento identità sessione:", e));
     }
@@ -3889,7 +3889,7 @@
             const myUid = fbAuth.currentUser && fbAuth.currentUser.uid;
             const cutoffMs = Date.now() - IDENTITY_CLAIM_MAX_AGE_MS;
             // solo i nomi usati negli ultimi giorni (non tutti i telefoni di sempre): molto più veloce
-            const snap = await db.collection('infermieri26_identities').where('updatedAt', '>=', firebase.firestore.Timestamp.fromMillis(cutoffMs)).get();
+            const snap = await db.collection('reparto_identities').where('updatedAt', '>=', firebase.firestore.Timestamp.fromMillis(cutoffMs)).get();
             const rel = identityReleases || {};   // nomi liberati dall'admin (dalle impostazioni già in memoria)
             const locked = new Set();
             snap.forEach(doc => {
@@ -3900,7 +3900,7 @@
                 if(ms && ms > cutoffMs && !(rel[d.name] && ms <= rel[d.name])) locked.add(d.name);
             });
             identityLockedCache = locked;
-            try { localStorage.setItem('infermieri_identity_locked', JSON.stringify([...locked])); } catch(e) {}
+            try { localStorage.setItem('reparto_identity_locked', JSON.stringify([...locked])); } catch(e) {}
             return locked;
         } catch(e) { console.error("Errore lettura identità attive:", e); return null; }
     }
@@ -3918,7 +3918,7 @@
     // i nomi restano in attesa invece di sembrare tutti liberi.
     let identityLockedCache = null, identityReleases = {};
     function savedLockedIdentities() {
-        try { const a = JSON.parse(localStorage.getItem('infermieri_identity_locked') || 'null'); return Array.isArray(a) ? new Set(a) : null; } catch(e) { return null; }
+        try { const a = JSON.parse(localStorage.getItem('reparto_identity_locked') || 'null'); return Array.isArray(a) ? new Set(a) : null; } catch(e) { return null; }
     }
     async function openIdentityModal() {
         const known = identityLockedCache || savedLockedIdentities();
@@ -3957,7 +3957,7 @@
             return;
         }
         userIdentity = name;
-        localStorage.setItem('infermieri_identity_name', name);
+        localStorage.setItem('reparto_identity_name', name);
         writeIdentityToSession();
         persistIdentityToUidBackup();
         checkIfIAmCoordinator();
@@ -3983,7 +3983,7 @@
     function sendHeartbeat(e) {
         if(!fbReady) return;
         if(document.visibilityState !== 'visible' && !(e && e.type === 'visibilitychange')) return;
-        db.collection('infermieri26_accessi').doc(sessionId).set({
+        db.collection('reparto_accessi').doc(sessionId).set({
             lastActive: firebase.firestore.FieldValue.serverTimestamp(),
             currentView: currentViewLabel,
             online: document.visibilityState === 'visible'
@@ -3993,7 +3993,7 @@
     function appErrFlush() {
         if(SERVER_MODE || !fbReady || !APP_ERR.queue.length || !fbAuth || !fbAuth.currentUser) return;
         const items = APP_ERR.queue.splice(0), FV = firebase.firestore.FieldValue;
-        db.collection('infermieri26_accessi').doc(sessionId).set({ errors: FV.arrayUnion(...items), errCount: FV.increment(items.length), lastErrorAt: FV.serverTimestamp() }, { merge:true }).catch(() => {});
+        db.collection('reparto_accessi').doc(sessionId).set({ errors: FV.arrayUnion(...items), errCount: FV.increment(items.length), lastErrorAt: FV.serverTimestamp() }, { merge:true }).catch(() => {});
     }
     function setCurrentView(label) {
         const changed = currentViewLabel !== label;
@@ -4009,7 +4009,7 @@
             online: document.visibilityState === 'visible'
         };
         if(changed) payload.viewHistory = sessionViewHistory;
-        db.collection('infermieri26_accessi').doc(sessionId).set(payload, { merge:true }).catch(()=>{});
+        db.collection('reparto_accessi').doc(sessionId).set(payload, { merge:true }).catch(()=>{});
     }
 
     // ── Config remota (colori, nomi operatori, orari) ───────────────────────
@@ -4085,8 +4085,8 @@
         if(opNotesVer) { notesAfterChange(); noteNotify(); }
     }
 
-    // ── Notifiche richieste in arrivo dal portale Richieste Infermieri ──────
-    // Ascolta la collection "richieste_infermieri" (stesso progetto Firebase):
+    // ── Notifiche richieste in arrivo dal portale Richieste ──────
+    // Ascolta la collection "richieste_reparto" (stesso progetto Firebase):
     // per ogni NUOVA richiesta (non quelle già presenti al primo caricamento),
     // se chi è loggato in questo momento è il coordinatore designato, genera
     // una notifica nel centro notifiche esistente (🔔).
@@ -4109,7 +4109,7 @@
     let richiesteListenerReady = false;
     function listenIncomingRequests() {
         if(!fbReady) return;
-        db.collection('richieste_infermieri').orderBy('timestamp', 'desc').limit(50)
+        db.collection('richieste_reparto').orderBy('timestamp', 'desc').limit(50)
             .onSnapshot(snap => {
                 // al primo caricamento: quelle arrivate mentre l'app era chiusa (non si perde nessuna richiesta)
                 if(!richiesteListenerReady) { richiesteListenerReady = true; reqCatchUp(snap.docs); return; }
@@ -4118,7 +4118,7 @@
                     notifyCoordinatorOfNewRequest(change.doc.data(), change.doc.id);
                     reqMarkSeen(change.doc.data().timestamp);
                 });
-            }, err => console.error('Errore ascolto richieste infermieri:', err));
+            }, err => console.error('Errore ascolto richieste:', err));
     }
     function reqParts(r) {
         const label = RICHIESTE_TYPE_LABELS[r.type] || r.type || 'Richiesta';
@@ -4257,7 +4257,7 @@
     function startAdminAccessListener() {
         if(!fbReady) return;
         if(adminAccessUnsub) adminAccessUnsub();
-        adminAccessUnsub = db.collection('infermieri26_accessi').orderBy('lastActive','desc').limit(200)
+        adminAccessUnsub = db.collection('reparto_accessi').orderBy('lastActive','desc').limit(200)
             .onSnapshot(snap => {
                 adminAccessDocs = snap.docs.map(d => ({ id:d.id, ...d.data() }));
                 renderAdminAccessList();
@@ -4355,11 +4355,11 @@
         // lo stato del motore su GitHub arriva per conto suo: il pannello non lo aspetta
         admLoadMotore();
         const [sess, ids, set, push, saldi, snap, req, ...logs] = await Promise.all([
-            safe(db.collection('infermieri26_accessi').where('startTime', '>=', since).orderBy('startTime', 'desc').limit(1500).get()),
+            safe(db.collection('reparto_accessi').where('startTime', '>=', since).orderBy('startTime', 'desc').limit(1500).get()),
             // servono solo i nomi presi negli ultimi 5 giorni, non tutti i telefoni di sempre
-            safe(db.collection('infermieri26_identities').where('updatedAt', '>=', firebase.firestore.Timestamp.fromMillis(Date.now() - IDENTITY_CLAIM_MAX_AGE_MS)).get()),
+            safe(db.collection('reparto_identities').where('updatedAt', '>=', firebase.firestore.Timestamp.fromMillis(Date.now() - IDENTITY_CLAIM_MAX_AGE_MS)).get()),
             safe(cfgRef('settings').get()), safe(cfgRef('push').get()), safe(cfgRef('saldi').get()), safe(cfgRef('snapindex').get()),
-            safe(db.collection('richieste_infermieri').orderBy('timestamp', 'desc').limit(80).get()),
+            safe(db.collection('richieste_reparto').orderBy('timestamp', 'desc').limit(80).get()),
             ...dates.map(d => safe(cfgRef('log_' + d).get()))
         ]);
         const S = set && set.exists ? (set.data() || {}) : {};
@@ -5012,7 +5012,7 @@
     function setShiftYear(y) {
         SHIFT_YEAR = y; HOLIDAYS = holidaysFor(y);
         const sub = document.querySelector('.app-subtitle-text'); if(sub) sub.textContent = 'Calendario ' + y + ' · demo';
-        document.title = 'INFERMIERI ' + y;
+        document.title = 'Turni di Reparto ' + y;
     }
     const SPECIAL_SUBCODES = {
         v:  "FERIE RESIDUE", r: "RECUPERO", f: "CONGEDO ORDINARIO (C.O.)", m: "MALATTIA",
@@ -5204,7 +5204,7 @@
         const head = document.getElementById('mn-head'), body = document.getElementById('mn-body'); if(!head || !body) return;
         if(!menuPath.length) {
             const nm = userIdentity || 'Ospite';
-            head.innerHTML = `<span class="mn-avatar">${esc(nm.slice(0, 2).toUpperCase())}</span><span class="mn-title"><b>${esc(nm)}</b><small>Turni infermieri ${SHIFT_YEAR}</small></span>`;
+            head.innerHTML = `<span class="mn-avatar">${esc(nm.slice(0, 2).toUpperCase())}</span><span class="mn-title"><b>${esc(nm)}</b><small>Turni di reparto ${SHIFT_YEAR}</small></span>`;
         } else {
             const trail = menuPath.map((id, i) => (menuNodeAt(menuPath.slice(0, i + 1)) || {}).node).filter(Boolean);
             const crumbs = ['Menu'].concat(trail.slice(0, -1).map(n => n.label)).join(' \u203a ');
@@ -6942,7 +6942,7 @@
     // ═══ L'ALTRA SQUADRA IN TURNO ════════════════════════════════════════
     // Nel riepilogo del turno (tocco su una casella) compaiono anche gli autisti in turno quel
     // giorno, con le stesse schede dei colleghi. Si legge il file dell'app autisti in uso
-    // (solo lettura). Nell'app autisti lo script di conversione cambia OTHER_TEAM con gli infermieri.
+    // (solo lettura). Nell'app autisti lo script di conversione cambia OTHER_TEAM con questa squadra.
     var OTHER_TEAM = null;   // demo: nessuna altra squadra collegata
     var otherTeam = null, otherTeamLoading = null;
     // File autisti: riga 1 mesi ("GENNAIO . 1"), riga 2 giorni, per ogni autista riga turni + riga
@@ -7305,7 +7305,7 @@
     function icsEsc(s) { return String(s).replace(/[\\;,]/g, m => '\\' + m).replace(/\n/g, '\\n'); }
     // Calendario .ics di una persona (dal giorno "from" in poi).
     function icsFor(d, fromIso) {
-        const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Turni Infermieri Demo//IT', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+        const L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Turni di Reparto Demo//IT', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
             'X-WR-CALNAME:' + icsEsc('Turni ' + d.name), 'X-WR-TIMEZONE:Europe/Rome', 'REFRESH-INTERVAL;VALUE=DURATION:PT1H', 'X-PUBLISHED-TTL:PT1H'];
         const stamp = 'DTSTAMP:20260101T000000Z', slug = calSlug(d.originalName);
         const dt = (iso, hm) => iso.replace(/-/g, '') + 'T' + hm.replace(':', '') + '00';
@@ -7434,7 +7434,7 @@
         try { const p = await cfgRef('prefs').get(); prefsDoc = p.exists ? p.data() : {}; } catch(e) {}
         try { const p = await cfgRef('push').get(); subs = p.exists ? (p.data().subs || {}) : {}; } catch(e) {}
         try {
-            const q = await db.collection('richieste_infermieri').orderBy('timestamp', 'desc').limit(80).get();
+            const q = await db.collection('richieste_reparto').orderBy('timestamp', 'desc').limit(80).get();
             requests = q.docs.map(x => { const r = x.data(); return { id: x.id, name: r.name || '', type: (RICHIESTE_TYPE_LABELS && RICHIESTE_TYPE_LABELS[r.type]) || String(r.type || '').replace(/_/g, ' '), kind: r.type || '', timeSlot: r.timeSlot || '', auto: reqIsAutoCessione(r), dateFrom: r.dateFrom || '', dateTo: r.dateTo || '', swapWith: r.swapWith || '', inserted: !!r.insertedInShifts }; });
         } catch(e) {}
         // note degli operatori ancora da gestire: al coordinatore arrivano come le richieste (id nuovo se la nota cambia)
@@ -7458,7 +7458,7 @@
     // Finché il coordinatore prepara i turni su Excel: il file si confronta con i turni dell'app
     // e le differenze diventano modifiche in sospeso nel calendario (da controllare, poi Salva).
     // Le persone dell'app che mancano nel file e gli straordinari inseriti nell'app non si toccano.
-    const IMPORT_OFFICIAL = { label: 'infermieri.xlsx', url: 'infermieri.xlsx' };
+    const IMPORT_OFFICIAL = { label: 'turni.xlsx', url: 'turni.xlsx' };
     let importLast = null, importSel = {};
     function importReadRaw(ws) {
         const raw = [];
@@ -9009,7 +9009,7 @@
         if(isViewingArchive()) { ccToast('Torna all’anno attivo prima di cambiare.', true); return; }
         if(pendingChangesCount()) { ccToast('Prima salva o annulla le modifiche in sospeso.', true); return; }
         if(target === 'excel') {
-            const ok = await ccConfirm('Tornare ai turni dal file Excel?', 'L’app mostrerà il file infermieri.xlsx così com’è. I turni fatti nell’app restano salvati ma non si vedono finché non torni a "Solo dall’app". Le correzioni fatte in modalità Excel ripartono da zero. Prima faccio una copia di sicurezza.', 'Passa a Excel', 'solid-danger');
+            const ok = await ccConfirm('Tornare ai turni dal file Excel?', 'L’app mostrerà il file turni.xlsx così com’è. I turni fatti nell’app restano salvati ma non si vedono finché non torni a "Solo dall’app". Le correzioni fatte in modalità Excel ripartono da zero. Prima faccio una copia di sicurezza.', 'Passa a Excel', 'solid-danger');
             if(!ok) return;
             try {
                 await takeSnapshot('prima-di-tornare-a-excel');
@@ -9047,12 +9047,12 @@
             try { const r = await fetch(IMPORT_OFFICIAL.url + '?t=' + Date.now(), { method: 'HEAD', cache: 'no-store' }); const lm = r.headers.get('last-modified'); s.textContent = lm ? 'ultimo caricamento del file: ' + new Date(lm).toLocaleString('it-IT', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : ''; } catch(e) {}
         }, 0);
         return `<div class="src-switch" role="radiogroup" aria-label="Origine dei turni">
-                <button class="src-opt ${xl ? 'on' : ''}" role="radio" aria-checked="${xl}" onclick="ccSwitchSource('excel')"><span class="msym">table_view</span><span><b>Da file Excel</b><small>il coordinatore carica infermieri.xlsx su GitHub</small></span>${xl ? '<em>in uso</em>' : ''}</button>
+                <button class="src-opt ${xl ? 'on' : ''}" role="radio" aria-checked="${xl}" onclick="ccSwitchSource('excel')"><span class="msym">table_view</span><span><b>Da file Excel</b><small>il coordinatore carica turni.xlsx su GitHub</small></span>${xl ? '<em>in uso</em>' : ''}</button>
                 <button class="src-opt ${xl ? '' : 'on'}" role="radio" aria-checked="${!xl}" onclick="ccSwitchSource('firebase')"><span class="msym">cloud_done</span><span><b>Solo dall’app</b><small>i turni si fanno in Modifica turni</small></span>${xl ? '' : '<em>in uso</em>'}</button>
             </div>
             <div class="src-info"><span class="msym">info</span><div>
                 ${xl ? `<b>Ora: i turni arrivano dal file Excel</b> <small id="src-xl-date"></small>
-                    <ul><li>L’app mostra il file così com’è: per aggiornare i turni basta caricare il nuovo infermieri.xlsx.</li>
+                    <ul><li>L’app mostra il file così com’è: per aggiornare i turni basta caricare il nuovo turni.xlsx.</li>
                     <li>Le correzioni fatte in Modifica turni restano sopra il file.</li>
                     <li><b>Se passi a "Solo dall’app"</b>: scegli se copiare tutto il file nell’app (i mesi vengono sostituiti) o tenere i turni già nell’app e importare solo le differenze. Da lì caricare il file non cambia più niente: i turni si fanno solo qui.</li></ul>`
                 : `<b>Ora: i turni si fanno solo nell’app</b> <small id="src-xl-date"></small>
@@ -9491,7 +9491,7 @@
         if(!m || c === 'rgb(1, 2, 3)' || (m[4] !== undefined && +m[4] === 0)) return null;
         return [+m[1], +m[2], +m[3]];
     }
-    function myCalFileName(data) { return `turni-${(data.d.name || 'infermiere').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-${myCalRangeTxt(data.months).replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.pdf`; }
+    function myCalFileName(data) { return `turni-${(data.d.name || 'operatore').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-${myCalRangeTxt(data.months).replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.pdf`; }
     function myCalPrint() {
         vibrate();
         const data = myCalData(); if(!data || !data.months.length) return;
@@ -9634,13 +9634,13 @@
             const hex = v => { const c = (css.getPropertyValue(v) || '').trim(); const m = /^#([0-9a-f]{6})$/i.exec(c); return m ? [parseInt(m[1].slice(0,2),16), parseInt(m[1].slice(2,4),16), parseInt(m[1].slice(4,6),16)] : null; };
             const title = MONTH_NAMES_IT[mi].charAt(0).toUpperCase() + MONTH_NAMES_IT[mi].slice(1) + ' ' + SHIFT_YEAR;
             const wd = ['D','L','M','M','G','V','S'];
-            const head = [['Infermiere', ...days.map(dd => `${dd.day}\n${wd[dd.date.getDay()]}`)]];
+            const head = [['Operatore', ...days.map(dd => `${dd.day}\n${wd[dd.date.getDay()]}`)]];
             const metas = ops.map(d => days.map(dd => ccCodeMeta(computeDayInfo(dd.rowIdx, d.idx))));
             const body = ops.map((d, i) => [d.name, ...metas[i].map(m => m.short === 'M+N' ? 'MN' : (m.short || ''))]);
             body.push(['Reperibile', ...days.map(dd => { const t = R.tit[ymd(dd.date)]; return t ? repDisplayName(t).slice(0, 5) : ''; })]);
             const fest = days.map(dd => dd.date.getDay() === 0 || !!HOLIDAYS[`${dd.date.getMonth()}-${dd.date.getDate()}`]);
             const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
-            doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.text(`Turni infermieri - ${title}`, 10, 12);
+            doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.text(`Turni di reparto - ${title}`, 10, 12);
             doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(90);
             doc.text(`Stampato il ${new Date().toLocaleString('it-IT')} - M mattina, P pomeriggio, N notte, S/SM smonto, R riposo, lettere minuscole = diurni; assenze: CO, FER, REC, PER, MAL, STU, PN, NG, NL, SC, GR`, 10, 17);
             doc.setTextColor(0);
@@ -9661,7 +9661,7 @@
                 }
             });
             if(returnDoc) return doc;
-            doc.save(`turni-infermieri-${MONTH_NAMES_IT[mi]}-${SHIFT_YEAR}.pdf`);
+            doc.save(`turni-reparto-${MONTH_NAMES_IT[mi]}-${SHIFT_YEAR}.pdf`);
             ccToast('PDF scaricato');
         } catch(e) { console.error(e); ccToast('PDF non creato: controlla la connessione.', true); }
     }
@@ -10108,7 +10108,7 @@
     // SICUREZZA DEI DATI — salvataggi per singola casella, conferma, bozza, storico,
     // istantanee, backup, anni e passaggio definitivo a Firebase
     // ═══════════════════════════════════════════════════════════════════════
-    // Origine dei turni: 'excel' = infermieri.xlsx + modifiche (manualOverrides nel documento
+    // Origine dei turni: 'excel' = turni.xlsx + modifiche (manualOverrides nel documento
     // impostazioni); 'firebase' = i turni vivono solo su Firestore, un documento per mese
     // ("turni_AAAA-MM", mappa cells) e l'Excel non viene più letto.
     let dataSourceMode = 'firebase', activeYear = DEMO_YEAR, archivedYears = [];
@@ -10124,7 +10124,7 @@
     function seedNamespaceSettings() {
         if(!DATA_NS || nsSeedTried || !fbReady) return;
         nsSeedTried = true;
-        db.collection('infermieri26_config').doc('settings').get().then(d => {
+        db.collection('reparto_config').doc('settings').get().then(d => {
             if(!d.exists) return;
             return cfgRef('settings').get().then(p => { if(!p.exists) return cfgRef('settings').set(Object.assign({}, d.data(), { copiedFromSharedAt: new Date().toISOString() })); });
         }).catch(e => console.error('Copia iniziale impostazioni non riuscita:', e));
@@ -10301,7 +10301,7 @@
     let repRawCessioni = {};   // mappa "cessioni" così com'è su Firestore (per le istantanee)
     function buildSnapshotContent() {
         const content = {
-            app:'turni-infermieri', version:1, ns: DATA_NS, createdAt: new Date().toISOString(), createdBy: whoAmI(),
+            app:'turni-reparto', version:1, ns: DATA_NS, createdAt: new Date().toISOString(), createdBy: whoAmI(),
             mode: dataSourceMode, activeYear,
             settings: { operatorConfig, nameOverrides, coordinatorName: coordinatorName || null, excelSyncedMarks },
             reperibilita: { turni: repTurniSaved, cessioni: repRawCessioni }
@@ -10365,7 +10365,7 @@
         } catch(e) {}
         try {
             const FP = firebase.firestore.FieldPath.documentId();
-            const q = await db.collection('infermieri26_config').where(FP, '>=', DATA_NS + 'snap_').where(FP, '<', DATA_NS + 'snap_').get();
+            const q = await db.collection('reparto_config').where(FP, '>=', DATA_NS + 'snap_').where(FP, '<', DATA_NS + 'snap_').get();
             q.forEach(d => out.push({ id: d.id.slice(DATA_NS.length), kind: d.data().kind, createdAt: d.data().createdAt, size: d.data().size }));
         } catch(e) {
             // senza permesso di elencare: si provano le ultime 15 copie giornaliere
@@ -10378,7 +10378,7 @@
     }
     // Ripristino: prima si salva una copia dello stato attuale, poi si riscrivono i dati.
     async function restoreFromContent(content, label) {
-        if(!content || content.app !== 'turni-infermieri') { ccToast('File non valido: non è un backup dei turni infermieri.', true); return; }
+        if(!content || content.app !== 'turni-reparto') { ccToast('File non valido: non è un backup dei turni del reparto.', true); return; }
         if(isViewingArchive()) { ccToast('Torna all’anno attivo prima di ripristinare.', true); return; }
         if(content.mode !== dataSourceMode || (content.mode === 'firebase' && +content.activeYear !== activeYear)) {
             ccToast(`Questa copia è di un’altra situazione (${content.mode === 'firebase' ? 'Firebase ' + content.activeYear : 'Excel'}): non la ripristino per non mescolare i dati.`, true); return;
@@ -10410,7 +10410,7 @@
         catch(e) { ccToast('Copia non leggibile.', true); }
     }
     async function downloadSnapshot(id) {
-        try { const d = await cfgRef(id).get(); if(!d.exists) return; downloadText(`turni-infermieri-${id}.json`, d.data().data); } catch(e) { ccToast('Download non riuscito.', true); }
+        try { const d = await cfgRef(id).get(); if(!d.exists) return; downloadText(`turni-reparto-${id}.json`, d.data().data); } catch(e) { ccToast('Download non riuscito.', true); }
     }
     function downloadText(name, text) {
         const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type:'application/json' })); a.download = name;
@@ -10427,7 +10427,7 @@
                 for(let m = 0; m < 12; m++) { const d = await cfgRef(monthDocName(y, m)).get(); if(d.exists) turni[String(m + 1).padStart(2, '0')] = d.data().cells || {}; }
                 content.archivio[y] = { meta: meta.exists ? meta.data() : null, turni };
             }
-            downloadText(`backup-turni-infermieri-${ymd(new Date())}.json`, JSON.stringify(content, null, 1));
+            downloadText(`backup-turni-reparto-${ymd(new Date())}.json`, JSON.stringify(content, null, 1));
             try { localStorage.setItem('coord_last_backup_' + DATA_NS, new Date().toISOString()); } catch(e) {}
             ccToast('Backup scaricato: conservalo in un posto sicuro (es. Google Drive).');
             if(ccSection === 'dati') ccRefreshIfOpen();
@@ -10556,7 +10556,7 @@
         if(!excelParsedData.length || !finalData.length) { ccToast('Turni non ancora caricati: riprova tra poco.', true); return; }
         const year = SHIFT_YEAR;
         const ok = skipConfirm || await ccConfirm(`Passare definitivamente a Firebase?`,
-            `I turni del ${year} visibili ora a calendario vengono copiati su Firebase, mese per mese. Da quel momento l’app non legge più infermieri.xlsx: ogni turno si assegna solo da qui. Prima faccio una copia di sicurezza. Fallo solo quando l’Excel caricato è quello giusto.`,
+            `I turni del ${year} visibili ora a calendario vengono copiati su Firebase, mese per mese. Da quel momento l’app non legge più turni.xlsx: ogni turno si assegna solo da qui. Prima faccio una copia di sicurezza. Fallo solo quando l’Excel caricato è quello giusto.`,
             'Copia e passa a Firebase', 'solid-danger');
         if(!ok) return;
         try {
@@ -10992,7 +10992,7 @@
         coppie:       { title:'Chi lavora con chi', sub:'Quanti turni ognuno ha fatto insieme a ogni collega, per distribuire le coppie in modo equo.' },
         reperibilita: { title:'Report reperibilità', sub:'Ore di reperibilità di ogni operatore, giorno per giorno, per l’ufficio personale.' },
         ferie:        { title:'Regole ferie e permessi', sub:'Quante persone in ferie insieme, assenze incompatibili e periodi bloccati: gli operatori vedono i periodi consigliati.' },
-        riportare:    { title:'Da riportare su Excel', sub:'Modifiche fatte nell\u2019app che vanno inserite anche nel file infermieri.xlsx.' },
+        riportare:    { title:'Da riportare su Excel', sub:'Modifiche fatte nell\u2019app che vanno inserite anche nel file turni.xlsx.' },
         dati:         { title:'Dati e backup', sub:'Protezione dei turni: backup, copie automatiche, storico delle modifiche, anni e origine dei dati.' },
         impostazioni: { title:'Impostazioni', sub:'Coordinatore designato, consigli sulle ore, ruota e sessione.' }
     };
@@ -11648,7 +11648,7 @@
                     <td class="r"><button class="cc-btn sm" onclick="confirmSyncItemDone(${i})"><span class="msym">check</span>Fatto</button></td>
                 </tr>`).join('')}</tbody>
             </table></div>
-            <p class="cc-note" style="margin-top:10px">Premi Fatto dopo aver inserito la modifica nel file infermieri.xlsx. Se il turno cambia di nuovo, la voce ricompare.</p>`;
+            <p class="cc-note" style="margin-top:10px">Premi Fatto dopo aver inserito la modifica nel file turni.xlsx. Se il turno cambia di nuovo, la voce ricompare.</p>`;
         ccSyncCache = list;
         document.getElementById('cc-top-actions').innerHTML = `<button class="cc-btn" onclick="confirmAllSyncDone()"><span class="msym">done_all</span>Segna tutto come riportato</button>`;
     }
@@ -12491,7 +12491,7 @@
     // autisti e dal portale Richieste:
     //   [0]=00-07  [1]=07-13   coda della reperibilità iniziata IERI
     //   [2]=13-20  [3]=20-00   reperibilità che inizia OGGI
-    // • Titolare del turno che parte il giorno X: documento infermieri26_config/reperibilita,
+    // • Titolare del turno che parte il giorno X: documento reparto_config/reperibilita,
     //   mappa "turni" { "YYYY-MM-DD": nome originale della colonna, "" = eliminata }. I giorni
     //   senza voce ripiegano sul file Excel (codice "/R", es. "M/R"), così si può abbandonare
     //   l'Excel un po' alla volta.
@@ -12620,11 +12620,11 @@
     }
 
     // ── Firestore ──────────────────────────────────────────────────────────
-    // Tutto in un solo documento (le regole Firebase del progetto consentono infermieri26_config):
+    // Tutto in un solo documento (le regole Firebase del progetto consentono reparto_config):
     //   turni:    { "YYYY-MM-DD": nome originale, "" = eliminata }
     //   cessioni: { "YYYY-MM-DD_slot": { date, slotIndex, timeSlot, originalDriver, newDriver, requestId, updatedAt } }
     // Le cessioni hanno lo stesso formato dei documenti "reperibilita_overrides" degli autisti.
-    function repDocRef() { return db.collection('infermieri26_config').doc('reperibilita'); }
+    function repDocRef() { return db.collection('reparto_config').doc('reperibilita'); }
     function listenReperibilita() {
         if(!fbReady) return;
         repDocRef().onSnapshot(doc => {
@@ -12882,7 +12882,7 @@
     // personale: 00-07 = 7 h, 07-13 = 6 h, 13-20 = 7 h, 20-00 = 4 h (24 h per turno).
     let ccRepMonth = new Date().getFullYear() === SHIFT_YEAR ? new Date().getMonth() : 0;
     function ccRepNav(delta) { ccRepMonth = delta === 0 ? (new Date().getFullYear() === SHIFT_YEAR ? new Date().getMonth() : 0) : Math.min(11, Math.max(0, ccRepMonth + delta)); renderCcReperibilita(); }
-    // Griglia del mese: una riga per OGNI infermiere (ordine del calendario), una colonna per
+    // Griglia del mese: una riga per OGNI operatore (ordine del calendario), una colonna per
     // giorno con le ore di reperibilità fatte in quel giorno, e il totale del mese in fondo.
     function repMonthReport(monthIdx) {
         const R = repData();
@@ -12930,7 +12930,7 @@
             </div>
             <div class="cc-table-wrap">
                 <table class="cc-table rr-table">
-                    <thead><tr><th class="cc-sticky">Infermiere</th>${head}<th class="r cc-sep-l">Totale<small>ore nel mese</small></th></tr></thead>
+                    <thead><tr><th class="cc-sticky">Operatore</th>${head}<th class="r cc-sep-l">Totale<small>ore nel mese</small></th></tr></thead>
                     <tbody>${body}</tbody>
                 </table>
             </div>
@@ -12944,7 +12944,7 @@
         const f = dt => repIsFestive(dt) ? 'f' : '';
         const th = M.dates.map((dt, i) => `<th class="${f(dt)}">${i + 1}<br><small>${REP_WD[repDateObj(dt).getDay()]}</small></th>`).join('');
         const rows = M.rows.map(r => `<tr><td class="n">${esc(r.name)}</td>${M.dates.map((dt, i) => { const m = r.days[i + 1] || 0; return `<td class="${f(dt)} ${m ? 'on' : ''}">${m ? repHours(m) : ''}</td>`; }).join('')}<td class="t">${repHours(r.total)}</td></tr>`).join('');
-        return `<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><title>Reperibilità infermieri — ${esc(M.title)}</title><style>
+        return `<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><title>Reperibilità — ${esc(M.title)}</title><style>
             @page { size:A4 landscape; margin:10mm; }
             * { box-sizing:border-box; } body { font:10px/1.3 Arial, Helvetica, sans-serif; color:#111; margin:0; }
             h1 { font-size:16px; margin:0 0 2px; } .sub { color:#555; margin:0 0 10px; }
@@ -12955,9 +12955,9 @@
             .legend { margin:8px 0 0; color:#555; }
             .firma { margin-top:28px; display:flex; justify-content:space-between; } .firma div { width:40%; border-top:1px solid #333; padding-top:4px; text-align:center; }
         </style></head><body>
-            <h1>Reperibilità infermieri — ${esc(M.title)}</h1>
+            <h1>Reperibilità — ${esc(M.title)}</h1>
             <p class="sub">Ore di reperibilità per giorno · totale reparto ${repHours(M.total)} h · generato il ${new Date().toLocaleString('it-IT')}</p>
-            <table><thead><tr><th>Infermiere</th>${th}<th>Totale ore</th></tr></thead><tbody>${rows}</tbody></table>
+            <table><thead><tr><th>Operatore</th>${th}<th>Totale ore</th></tr></thead><tbody>${rows}</tbody></table>
             <p class="legend">00-07 = 7 h · 07-13 = 6 h · 13-20 = 7 h · 20-00 = 4 h. Ore attribuite al giorno in cui cadono. Colonne rosate = domeniche e festivi.</p>
             <div class="firma"><div>Il coordinatore</div><div>Ufficio personale</div></div>
         </body></html>`;
@@ -12987,12 +12987,12 @@
         const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
         const W = doc.internal.pageSize.getWidth();
         doc.setFont('helvetica', 'bold'); doc.setFontSize(15);
-        doc.text(`Reperibilità infermieri - ${M.title}`, 10, 13);
+        doc.text(`Reperibilità - ${M.title}`, 10, 13);
         doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(90);
         doc.text(`Ore di reperibilità per giorno - totale reparto ${repHours(M.total)} h - generato il ${new Date().toLocaleString('it-IT')}`, 10, 18.5);
         doc.setTextColor(0);
         const fest = M.dates.map(repIsFestive);
-        const head = [['Infermiere', ...M.dates.map((dt, i) => `${i + 1}\n${REP_WD[repDateObj(dt).getDay()]}`), 'Totale']];
+        const head = [['Operatore', ...M.dates.map((dt, i) => `${i + 1}\n${REP_WD[repDateObj(dt).getDay()]}`), 'Totale']];
         const body = M.rows.map(r => [r.name, ...M.dates.map((dt, i) => r.days[i + 1] ? repHours(r.days[i + 1]) : ''), repHours(r.total)]);
         doc.autoTable({
             head, body, startY:22, margin:{ left:10, right:10 }, theme:'grid',
@@ -13022,7 +13022,7 @@
         try {
             ccToast('Preparo il PDF…');
             const { doc, M } = await repBuildPdf(ccRepMonth);
-            doc.save(`reperibilita-infermieri-${MONTH_NAMES_IT[M.monthIdx]}-${SHIFT_YEAR}.pdf`);
+            doc.save(`reperibilita-${MONTH_NAMES_IT[M.monthIdx]}-${SHIFT_YEAR}.pdf`);
             ccToast('PDF scaricato');
         } catch(e) { console.error(e); ccToast('PDF non creato: controlla la connessione.', true); }
     }
@@ -13210,9 +13210,9 @@
         });
         // notte contata sul turno effettivo: chi ha la notte con un'assenza sotto (es. permesso) non c'è
         drivers.forEach(d => { if(d.hidden) return; const c = computeDayInfo(i, d.idx).code; if(c === 'N' || c === 'M+N') countN++; });
-        // notte: il numero compare solo quando ne manca qualcuno (es. N2 = 2 infermieri su 3)
+        // notte: il numero compare solo quando ne manca qualcuno (es. N2 = 2 operatori su 3)
         const nightBadge = countN < NIGHT_STAFF_MIN && (countM + countP + countN) > 0
-            ? `<span class="dsc-n" title="Infermieri di notte: ${countN} su ${NIGHT_STAFF_MIN}">N<b>${countN}</b></span>` : '';
+            ? `<span class="dsc-n" title="Operatori di notte: ${countN} su ${NIGHT_STAFF_MIN}">N<b>${countN}</b></span>` : '';
         let hasMascotteM = countM === 3, hasMascotteP = countP === 3;
         const cover = coordEditModeActive ? dayTurnistiCover(i) : null;   // 3 turnisti per turno: bordo arancio o lampeggio rosso
 
@@ -13599,7 +13599,7 @@
                 </div>`;
             });
         } else {
-            list.innerHTML += `<div style="padding:20px;text-align:center;color:#94a3b8;font-size:0.9rem">Nessun infermiere in questo turno.</div>`;
+            list.innerHTML += `<div style="padding:20px;text-align:center;color:#94a3b8;font-size:0.9rem">Nessun operatore in questo turno.</div>`;
         }
         list.innerHTML += otherTeamHtml(rowIndex, uShift);
         list.innerHTML += repDaySectionHtml(repRowDate(rowIndex));
@@ -13680,12 +13680,12 @@
         "Oggi ho imparato che 'urgente' per alcuni significa 'tra due settimane'.",
         "La ciambella in sala pausa è più contesa del defibrillatore.",
         "Ho il turno più lungo della giornata e la pazienza più corta.",
-        "Oggi sono stato infermiere, psicologo, cameriere e paciere. Tutto incluso.",
+        "Oggi ho fatto da psicologo, cameriere e paciere. Tutto incluso.",
         "Attenzione: il camice nasconde superpoteri, non un mantello.",
         "Se il monitor bippa non è colpa mia. Probabilmente.",
         "Conosco la macchinetta del caffè meglio del mio letto.",
         "Il mio diario clinico di oggi: 'tutto normale, tranne io'.",
-        "Ho una laurea in scienze infermieristiche e un master in pazienza infinita."
+        "Ho una laurea in sanità e un master in pazienza infinita."
     ];
 
     let wheelSelectedNurses = [], wheelMode = '', wheelSlots = [], wheelSlotPool = [],
@@ -13782,7 +13782,7 @@
 
     function goToWheelStep2() {
         const checked = Array.from(document.querySelectorAll('#wheel-nurse-list input:checked')).map(x => x.value);
-        if(checked.length < 2) return alert("Seleziona almeno 2 infermieri!");
+        if(checked.length < 2) return alert("Seleziona almeno 2 colleghi!");
         vibrate(); wheelSelectedNurses = checked;
         hideAllWheelSteps(); document.getElementById('wheel-step-2').style.display = 'block';
     }
@@ -13981,7 +13981,7 @@
                     document.getElementById('wheel-current-slot-time').innerText = wheelSlots[wheelCurrentSlotIdx];
                     renderWheelGraphic(wheelNamesOnWheel, true);   // il risultato di prima resta visibile fino al prossimo giro
                     if(wheelSlotPool.length === 1) {
-                        // rimane un solo infermiere: niente giro, la fascia è sua
+                        // rimane un solo operatore: niente giro, la fascia è sua
                         const only = wheelSlotPool[0], time = wheelSlots[wheelCurrentSlotIdx];
                         document.getElementById('wheel-spin-btn').disabled = true;
                         const hub = document.getElementById('wh-hub'); if(hub) hub.disabled = true;
@@ -14004,7 +14004,7 @@
             if(SERVER_MODE || !fbReady) return;
             const e = { t: Date.now(), mode: wheelMode, winner: String(winner || ''), slot: wheelMode === 'slots' ? String(wheelSlots[wheelCurrentSlotIdx] || '') : '', n: (wheelNamesOnWheel || []).length, by: userIdentity || '' };
             const FV = firebase.firestore.FieldValue;
-            db.collection('infermieri26_accessi').doc(sessionId).set({ wheelLog: FV.arrayUnion(e), wheelSpins: FV.increment(1) }, { merge:true }).catch(() => {});
+            db.collection('reparto_accessi').doc(sessionId).set({ wheelLog: FV.arrayUnion(e), wheelSpins: FV.increment(1) }, { merge:true }).catch(() => {});
         } catch(e) {}
     }
     function renderWheelAssignList() {
@@ -14118,7 +14118,7 @@
 
         function ensureLoaded(reqId) {
             const identity = (typeof userIdentity !== 'undefined' && userIdentity) ? userIdentity : null;
-            // Passa l'identità già selezionata qui in Turni Infermieri, così nel portale
+            // Passa l'identità già selezionata qui in Turni di Reparto, così nel portale
             // Richieste non serve un secondo login: si accede in automatico con lo stesso
             // operatore. Se l'identità cambia (es. dopo "Cambia Utente"), l'iframe viene
             // ricaricato con la nuova identità la prossima volta che si apre il pannello.

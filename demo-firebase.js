@@ -11,7 +11,7 @@
  */
 (function () {
     'use strict';
-    var STORE_KEY = 'demo_turni_db_v1';
+    var STORE_KEY = 'demo_turni_db_v2';
     var mem = null;
 
     // ── serializzazione (i Timestamp diventano {__ts: ms}) ─────────────────────

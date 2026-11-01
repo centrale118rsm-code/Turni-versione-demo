@@ -2,7 +2,7 @@
  * VERSIONE DIMOSTRATIVA — dati di esempio.
  *
  * Alla prima apertura (o dopo "Ripristina dati demo") crea nel browser un reparto finto:
- * 20 infermieri con nomi inventati, il calendario dell'anno in corso (ciclo dei turnisti
+ * 20 operatori con nomi inventati, il calendario dell'anno in corso (ciclo dei turnisti
  * Pomeriggio › Mattina › Notte › Smonto › Riposo, diurnisti dal lunedì al venerdì),
  * ferie estive e invernali, qualche malattia e permesso, le reperibilità.
  * Tutto è generato qui: nessun dato reale.
@@ -12,10 +12,10 @@
     if (!window.DEMO_DB) return;
     var YEAR = new Date().getFullYear();
     try {
-        var raw = JSON.parse(localStorage.getItem('demo_turni_db_v1') || 'null');
-        var st = raw && raw.infermieri26_config && raw.infermieri26_config.settings;
+        var raw = JSON.parse(localStorage.getItem('demo_turni_db_v2') || 'null');
+        var st = raw && raw.reparto_config && raw.reparto_config.settings;
         if (st && +st.activeYear === YEAR) return;          // dati demo già presenti e dell'anno giusto
-        if (raw) { localStorage.removeItem('demo_turni_db_v1'); }   // anno nuovo: si riparte da dati freschi
+        if (raw) { localStorage.removeItem('demo_turni_db_v2'); }   // anno nuovo: si riparte da dati freschi
     } catch (e) {}
 
     var MONTHS = ['GENNAIO', 'FEBBRAIO', 'MARZO', 'APRILE', 'MAGGIO', 'GIUGNO', 'LUGLIO', 'AGOSTO', 'SETTEMBRE', 'OTTOBRE', 'NOVEMBRE', 'DICEMBRE'];
@@ -150,7 +150,7 @@
             contract: {},
             allow: {}
         },
-        welcome: { active: true, title: 'VERSIONE DIMOSTRATIVA', text: 'Questa è una demo con un reparto inventato.\nPuoi modificare tutto: i dati restano solo su questo dispositivo.\nArea coordinatore: password demo', duration: 6 },
+        welcome: { active: true, title: 'VERSIONE DIMOSTRATIVA', text: 'Questa è una demo con un reparto inventato: va bene per infermieri, medici o OSS.\nPuoi modificare tutto: i dati restano solo su questo dispositivo.\nArea coordinatore: password demo', duration: 6 },
         coordMessages: [
             { id: 'demo1', title: 'Riunione di reparto', text: 'Giovedì alle 14:00 in sala riunioni: nuovo protocollo consegne. Presenza consigliata per chi è di turno.', secs: 5, from: today, to: iso(new Date(Date.now() + 20 * 864e5)), active: true, by: COORD, updatedAt: new Date().toISOString() }
         ],
@@ -159,6 +159,6 @@
     docs.settings = settings;
     docs.reperibilita = { turni: rep, cessioni: cessioni, updatedAt: new Date(EPOCH).toISOString() };
 
-    window.DEMO_DB.seed({ infermieri26_config: docs });
+    window.DEMO_DB.seed({ reparto_config: docs });
     try { localStorage.setItem('data_source_', 'firebase'); } catch (e) {}
 })();

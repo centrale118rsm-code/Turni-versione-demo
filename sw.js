@@ -1,10 +1,10 @@
 // Service worker della versione dimostrativa: serve solo a installare l'app sul telefono
 // e ad aprirla anche senza rete con l'ultima copia scaricata. Niente notifiche push.
-const CACHE = 'turni-demo-v1';
+const CACHE = 'turni-demo-v2';
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then((c) => Promise.all(
-    ['./', './index.html', './demo-firebase.js', './demo-data.js', './manifest.json', './icon-192.png', './icon-512.png']
+    ['./', './index.html', './demo-firebase.js', './demo-data.js', './manifest.json', './icon-192.png', './icon-512.png', './icon-maskable-512.png']
       .map((u) => c.add(u).catch(() => {})))));
 });
 self.addEventListener('activate', (event) => {

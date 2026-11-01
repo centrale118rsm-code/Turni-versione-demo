@@ -1,6 +1,6 @@
-# Turni Infermieri — versione dimostrativa
+# Turni di Reparto — versione dimostrativa
 
-Web app per gestire i turni di un reparto infermieristico: calendario condiviso, area coordinatore,
+Web app per gestire i turni del personale di un reparto (infermieri, medici, OSS o altre figure): calendario condiviso, area coordinatore,
 conteggio ore e assenze, reperibilità, ferie e permessi, equità dell'anno, stampa e PDF.
 
 Questa è la **versione demo**: reparto e nomi sono inventati e **non c'è nessun server**.
@@ -9,7 +9,7 @@ Questa è la **versione demo**: reparto e nomi sono inventati e **non c'è nessu
 
 - `demo-firebase.js` sostituisce Firebase: salva tutto nel browser di chi la apre (localStorage).
   Nessun dato esce dal dispositivo e ogni visitatore ha la sua copia.
-- `demo-data.js` alla prima apertura crea un reparto di esempio: 20 infermieri (16 turnisti con il
+- `demo-data.js` alla prima apertura crea un reparto di esempio: 20 operatori (16 turnisti con il
   ciclo Pomeriggio › Mattina › Notte › Smonto › Riposo, 3 diurnisti e il coordinatore), il calendario
   dell'anno in corso con ferie, malattie, permessi e reperibilità.
 - Menu › Impostazioni › **Ripristina dati demo** riporta tutto come all'inizio.
